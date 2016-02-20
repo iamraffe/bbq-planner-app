@@ -9,7 +9,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'simplecov', :require => false
-
+gem 'bootstrap-sass'
+gem 'bootswatch-rails'
 
 group :development, :test do
   gem 'sqlite3'
