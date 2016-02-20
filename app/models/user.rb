@@ -4,13 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  private
-
-    def sign_up_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  protected
+    def configure_sign_up_params
+      devise_parameter_sanitizer.for(:sign_up){ |u| u.permit(:name,  :email, :password, :password_confirmation)}
     end
 
-    def account_update_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password)
+    def configure_account_update_params
+      devise_parameter_sanitizer.for(:account_update){ |u| u.permit(:name, :email, :password, :password_confirmation) }
     end
 end
